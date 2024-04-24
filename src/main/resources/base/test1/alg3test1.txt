@@ -1,0 +1,17 @@
+public <T> TreeNode<T> szukaj(TreeNode<T> node, Object title) {
+
+
+        for (TreeNode<T> child : node.dzieci) {
+        if (child.key.equals(title)) {
+        return node;
+        }
+        TreeNode<T> parent = szukaj(child, title);
+        if (parent != null) {
+        return parent;
+        }
+        }
+        if (node == null || node.dzieci == null) {
+        return null;
+        }
+        return null;
+        }

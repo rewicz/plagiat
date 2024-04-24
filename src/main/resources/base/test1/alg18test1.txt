@@ -1,0 +1,29 @@
+private  int[] changeVector(int floor, int value)
+        {
+        int w[] = new int[n], v[] = new int[n];
+        int i;
+        int j;
+        i = 0;
+
+
+        if (value == 0) {
+        v[1] = 0;
+        v[0] = 1;
+        return v;
+        }
+        if (value < 0) {
+        return null;
+        }
+
+        while (value > 0) {
+        i++;
+        v[i] = value % floor;
+        value = value / floor;
+        // komentarz
+        }
+        for (j=1; j<i; j++)
+        w[j] = v[i-j+2];
+
+        w[0] = i-1;
+        return w;
+        }

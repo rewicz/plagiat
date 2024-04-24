@@ -1,0 +1,21 @@
+public <T> List<String> szukaj(TreeNode<T> node, T temp) {
+        //        komentarz
+        if (node == null || node.key.equals(temp)) {
+        return new ArrayList<>();
+        }
+        //        komentarz
+        List<String> arrayKeys = new ArrayList<>();
+        arrayKeys.add(node.key.toString());
+        if (node.children == null) {
+        return arrayKeys;
+        }
+
+        for (TreeNode<T> child : node.children) {
+        //        komentarz
+        List<String> parentKeys = searchAllChildrenKeys(child, temp);
+        arrayKeys.addAll(parentKeys);
+
+//        komentarz
+        }
+        return arrayKeys;
+        }

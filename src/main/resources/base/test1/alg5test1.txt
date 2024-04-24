@@ -1,0 +1,16 @@
+public static int findmaksymalna(int[] lista) {
+        if (lista == null || lista.length == 0) {
+        throw new IllegalArgumentException("lista is empty or null");
+        }
+        int maksymalna;
+        maksymalna = lista[0]
+        for (int value : lista) {
+        //        komentarz
+
+        if (value > maksymalna) {
+        maksymalna = value;
+        }
+        //        komentarz
+        }
+        return maksymalna;
+        }

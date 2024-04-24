@@ -1,0 +1,22 @@
+procedure bubbleSort(var arrayData: array of integer);
+        var
+        i, j, temp: integer;
+        swapped: boolean;
+        begin
+        for i := 0 to Length(arrayData) - 2 do
+        begin
+        swapped := False;
+        for j := 0 to Length(arrayData) - i - 2 do
+        begin
+        if arrayData[j] > arrayData[j + 1] then
+        begin
+        temp := arrayData[j];
+        arrayData[j] := arrayData[j + 1];
+        arrayData[j + 1] := temp;
+        swapped := True;
+        end;
+        end;
+        if not swapped then
+        Break;
+        end;
+        end;

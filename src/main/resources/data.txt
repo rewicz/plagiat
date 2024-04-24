@@ -1,0 +1,664 @@
+alg1
+    private static void b_sort(int tablica[], int ile_liczb) {
+        int temp,i,zmiana;
+        do {
+            zmiana=0;
+            i=ile_liczb-1;
+            do {
+                i--;
+                if (tablica[i+1]< tablica[i]) {
+                    temp=tablica[i];
+                    tablica[i]=tablica[i+1];
+                    tablica[i+1]=temp;
+                    zmiana=1;
+                }
+            } while (i!=0);
+       } while (zmiana!=0);
+    }
+#alg1
+
+
+alg2
+    public <T> TreeNode<T> updateChildrenInParent(TreeNode<T> element, Object matchingTitle, List<TreeNode<T>> newNodes) {
+    if (element == null) {
+      return null;
+    }
+    if (element.key.equals(matchingTitle)) {
+      if (element.children != null) {
+        element.children.clear();
+        element.children.addAll(newNodes);
+      }
+      element.triggered = true;
+      return element;
+    }
+    if (element.children != null) {
+      for (TreeNode<T> child : element.children) {
+        updateChildrenInParent(child, matchingTitle, newNodes);
+      }
+    }
+    return element;
+    }
+#alg2
+
+alg3
+    public <T> TreeNode<T> searchParentTreeNode(TreeNode<T> element, Object matchingTitle) {
+    if (element == null || element.children == null) {
+      return null;
+    }
+
+    for (TreeNode<T> child : element.children) {
+      if (child.key.equals(matchingTitle)) {
+        return element;
+      }
+      TreeNode<T> parent = searchParentTreeNode(child, matchingTitle);
+      if (parent != null) {
+        return parent;
+      }
+    }
+    return null;
+    }
+#alg3
+
+alg4
+    public <T> List<String> searchAllChildrenKeys(TreeNode<T> element, T tempKey) {
+    if (element == null || element.key.equals(tempKey)) {
+      return new ArrayList<>();
+    }
+    List<String> arrayKeys = new ArrayList<>();
+    arrayKeys.add(element.key.toString());
+    if (element.children == null) {
+      return arrayKeys;
+    }
+
+    for (TreeNode<T> child : element.children) {
+      List<String> parentKeys = searchAllChildrenKeys(child, tempKey);
+      arrayKeys.addAll(parentKeys);
+    }
+    return arrayKeys;
+    }
+#alg4
+
+alg5
+    public static int findMaxValue(int[] array) {
+    if (array == null || array.length == 0) {
+      throw new IllegalArgumentException("Array is empty or null");
+    }
+    int maxValue = array[0];
+    for (int value : array) {
+      if (value > maxValue) {
+        maxValue = value;
+      }
+    }
+    return maxValue;
+    }
+#alg5
+
+alg6
+    public static long factorial(int n) {
+    if (n < 0) {
+      throw new IllegalArgumentException("Number must be non-negative");
+    }
+    long result = 1;
+    for (int i = 2; i <= n; i++) {
+      result *= i;
+    }
+    return result;
+    }
+#alg6
+
+alg7
+    public static int selectElement(int[] array, int index, int defaultValue) {
+    if (array == null || index < 0 || index >= array.length) {
+      return defaultValue;
+    }
+    return array[index];
+    }
+#alg7
+
+alg8
+    public static void bubbleSort(int[] array) {
+    boolean swapped;
+    for (int i = 0; i < array.length - 1; i++) {
+      swapped = false;
+      for (int j = 0; j < array.length - i - 1; j++) {
+        if (array[j] > array[j + 1]) {
+          int temp = array[j];
+          array[j] = array[j + 1];
+          array[j + 1] = temp;
+          swapped = true;
+        }
+      }
+      if (!swapped) {
+        break;
+      }
+    }
+    }
+#alg8
+
+alg9
+    public static int sumNumbers(int[] array) {
+    int sum = 0;
+    for (int number : array) {
+      sum += number;
+    }
+    return sum;
+    }
+#alg9
+
+alg10
+    public static int gcd(int a, int b) {
+    while (b != 0) {
+      int temp = b;
+      b = a % b;
+      a = temp;
+    }
+    return a;
+    }
+#alg10
+
+alg11
+    public static int sumArray(int[] array) {
+    int sum = 0;
+    for (int number : array) {
+      sum += number;
+    }
+    return sum;
+    }
+#alg11
+
+alg12
+    public static Integer findLeader(int[] array) {
+    int count = 0;
+    Integer candidate = null;
+
+    for (int number : array) {
+      if (count == 0) {
+        candidate = number;
+      }
+      if (number == candidate) {
+        count++;
+      } else {
+        count--;
+      }
+    }
+
+    count = 0;
+    for (int number : array) {
+      if (number == candidate) {
+        count++;
+      }
+    }
+
+    if (count > array.length / 2) {
+      return candidate;
+    }
+    return null;
+    }
+#alg12
+
+alg13
+    public static boolean[] sieveOfEratosthenes(int n) {
+    boolean[] primes = new boolean[n + 1];
+    Arrays.fill(primes, true);
+    primes[0] = false;
+    primes[1] = false;
+
+    for (int i = 2; i * i <= n; i++) {
+      if (primes[i]) {
+        for (int j = i * i; j <= n; j += i) {
+          primes[j] = false;
+        }
+      }
+    }
+    return primes;
+    }
+#alg13
+
+alg14
+    public static void insertionSort(int[] array) {
+    for (int i = 1; i < array.length; i++) {
+      int current = array[i];
+      int j = i - 1;
+
+      while (j >= 0 && array[j] > current) {
+        array[j + 1] = array[j];
+        j--;
+      }
+      array[j + 1] = current;
+    }
+    }
+#alg14
+
+alg15
+    public static void shellSort(int[] array) {
+    int n = array.length;
+
+    for (int gap = n / 2; gap > 0; gap /= 2) {
+      for (int i = gap; i < n; i++) {
+        int temp = array[i];
+        int j;
+        for (j = i; j >= gap && array[j - gap] > temp; j -= gap) {
+          array[j] = array[j - gap];
+        }
+        array[j] = temp;
+      }
+    }
+    }
+#alg15
+
+alg16
+    public static String toBinary(int number) {
+        return Integer.toBinaryString(number);
+    }
+#alg16
+
+alg17
+    public static void dijkstra(int[][] graph, int startNode) {
+    int nVertices = graph.length;
+    int[] shortestDistances = new int[nVertices];
+    boolean[] added = new boolean[nVertices];
+
+    Arrays.fill(shortestDistances, Integer.MAX_VALUE);
+    Arrays.fill(added, false);
+
+    shortestDistances[startNode] = 0;
+
+    for (int i = 1; i < nVertices; i++) {
+      int nearestVertex = -1;
+      int shortestDistance = Integer.MAX_VALUE;
+      for (int vertexIndex = 0; vertexIndex < nVertices; vertexIndex++) {
+        if (!added[vertexIndex] && shortestDistances[vertexIndex] < shortestDistance) {
+          nearestVertex = vertexIndex;
+          shortestDistance = shortestDistances[vertexIndex];
+        }
+      }
+
+      added[nearestVertex] = true;
+
+      for (int vertexIndex = 0; vertexIndex < nVertices; vertexIndex++) {
+        int edgeDistance = graph[nearestVertex][vertexIndex];
+
+        if (edgeDistance > 0 && ((shortestDistance + edgeDistance) < shortestDistances[vertexIndex])) {
+          shortestDistances[vertexIndex] = shortestDistance + edgeDistance;
+        }
+      }
+    }
+    }
+#alg17
+
+alg18
+    private  int[] ZmianaPodstawy2Wektor(int pods, int liczba)
+    {
+        int v[] = new int[n];
+        int w[] = new int[n];
+        int i, j;
+
+        if (liczba < 0) {
+            return null;
+        }
+
+        if (liczba == 0) {
+            v[0] = 1;
+            v[1] = 0;
+            return v;
+        }
+
+        i = 0;
+        while (liczba > 0) {
+            i++;
+            v[i] = liczba % pods;
+            liczba = liczba / pods;
+        }
+        for (j=1; j<i; j++)
+            w[j] = v[i-j+2];
+
+        w[0] = i-1;
+        return w;
+    }
+#alg18
+    //CPP
+
+alg19
+    void insertionSort(std::vector<int>& array) {
+        for (size_t i = 1; i < array.size(); i++) {
+            int current = array[i];
+            int j = i - 1;
+
+            while (j >= 0 && array[j] > current) {
+                array[j + 1] = array[j];
+                j--;
+            }
+            array[j + 1] = current;
+        }
+    }
+#alg19
+
+alg20
+    void shellSort(std::vector<int>& array) {
+        int n = array.size();
+
+        for (int gap = n / 2; gap > 0; gap /= 2) {
+            for (int i = gap; i < n; i++) {
+                int temp = array[i];
+                int j;
+                for (j = i; j >= gap && array[j - gap] > temp; j -= gap) {
+                    array[j] = array[j - gap];
+                }
+                array[j] = temp;
+            }
+        }
+    }
+
+#alg20
+
+alg21
+    std::string intToBinary(int number) {
+        return std::bitset<32>(number).to_string();
+    }
+#alg21
+
+alg22
+    void dijkstra(const std::vector<std::vector<int>>& graph, int startNode) {
+        int nVertices = graph.size();
+        std::vector<int> shortestDistances(nVertices, std::numeric_limits<int>::max());
+        std::vector<bool> added(nVertices, false);
+
+        shortestDistances[startNode] = 0;
+
+        for (int i = 1; i < nVertices; i++) {
+            int nearestVertex = -1;
+            int shortestDistance = std::numeric_limits<int>::max();
+            for (int vertexIndex = 0; vertexIndex < nVertices; vertexIndex++) {
+                if (!added[vertexIndex] && shortestDistances[vertexIndex] < shortestDistance) {
+                    nearestVertex = vertexIndex;
+                    shortestDistance = shortestDistances[vertexIndex];
+                }
+            }
+
+            added[nearestVertex] = true;
+
+            for (int vertexIndex = 0; vertexIndex < nVertices; vertexIndex++) {
+                if (graph[nearestVertex][vertexIndex] > 0) {
+                    int edgeDistance = graph[nearestVertex][vertexIndex];
+                    if (shortestDistance + edgeDistance < shortestDistances[vertexIndex]) {
+                        shortestDistances[vertexIndex] = shortestDistance + edgeDistance;
+                    }
+                }
+            }
+        }
+    }
+#alg22
+
+alg23
+    function getRandom(min,max) {
+        var myRandom = max+1;
+        while (myRandom > max) {
+            myRandom = parseInt(Math.random()*(max-min+1) + min);
+        }
+        return myRandom;
+    }
+#alg23
+
+    //PASCAL
+alg24
+    function ZmianaPodstawy2Wektor(pods: Integer; liczba: Integer): vector;
+        var
+            v,w: vector;
+            i,j: Integer;
+        begin
+
+        if (liczba<0) then begin
+            exit;
+        end;
+        if (liczba=0) then begin
+            v[1]:=1;
+            v[2]:=0;
+            ZmianaPodstawy2Wektor:=v;
+        end;
+        i:=1;
+        while (liczba>0) do begin
+            inc(i);
+            v[i]:=liczba mod pods;
+            liczba:=liczba div pods;
+        end;
+        for j:=2 to i do w[j]:=v[i-j+2];
+        w[1]:=i-1;
+        ZmianaPodstawy2Wektor:=w;
+    end;
+#alg24
+
+alg25
+        function ZmianaPodstwy2Liczba(pods: Integer; v: vector): Integer;
+        var
+            suma: Integer;
+            i,j : Integer;
+        begin
+            suma:=0;
+            j:=0;
+                for i:=v[1]+1 downto 2 do begin
+                suma:=suma+(v[i]*pow(pods,j));
+                inc(j);
+            end;
+            ZmianaPodstwy2Liczba:=suma;
+    end;
+#alg25
+
+//PYTHON
+
+alg26
+def find_max(collection):
+    if len(collection) == 0:
+        return "No input to process"
+    max_element = collection[0]
+    for element in collection:
+        if element > max_element:
+            max_element = element
+    return max_element
+
+#alg26
+
+alg27
+def minimum_distance(distance, visited):
+    minimum = math.inf
+    min_index = -1
+    for v in range(len(distance)):
+        if distance[v] < minimum and (not visited[v]):
+            minimum = distance[v]
+            min_index = v
+    return min_index
+#alg27
+
+alg28
+def a_star_algorithm(graph, start, end):
+    start_node = Node(None, start)
+    start_node.g = start_node.h = start_node.f = 0
+    end_node = Node(None, end)
+    end_node.g = end_node.h = end_node.f = 0
+
+    open_nodes = []
+    closed_nodes = []
+    open_nodes.append(start_node)
+
+    while len(open_nodes) > 0:
+        current_node = open_nodes[0]
+        current_idx = 0
+
+        for idx, node in enumerate(open_nodes):
+            if node.f < current_node.f:
+                current_node = node
+                current_idx = idx
+
+        open_nodes.pop(current_idx)
+        closed_nodes.append(current_node)
+
+        if current_node == end_node:
+            path = []
+            temp = current_node
+            while temp is not None:
+                path.append(temp.cord)
+                temp = temp.parent
+            return [(t[1], t[0]) for t in path][::-1]
+
+        neighbours = []
+        for new_position in [(0, -1), (0, 1), (-1, 0), (1, 0)]:
+            current_position = (current_node.cord[0] + new_position[0], current_node.cord[1] + new_position[1])
+
+            if current_position[0] > (len(graph) - 1) or current_position[0] < 0 or current_position[1] > (
+                    len(graph[len(graph) - 1]) - 1) or current_position[1] < 0:
+                continue
+
+            if graph[current_position[0]][current_position[1]] != 0:
+                continue
+
+            new_node = Node(current_node, current_position)
+            neighbours.append(new_node)
+
+        for neighbour in neighbours:
+            for closed in closed_nodes:
+                if neighbour == closed:
+                    continue
+
+            neighbour.g = current_node.g + 1
+            neighbour.h = calculate(neighbour, end_node)
+            neighbour.f = neighbour.g + neighbour.h
+
+            for opened in open_nodes:
+                if neighbour == opened and neighbour.g > opened.g:
+                    continue
+
+            open_nodes.append(neighbour)
+#alg28
+
+alg29
+def floyd_warshall_algorithm(graph):
+    n = len(graph)
+    distance = copy.deepcopy(graph)
+
+    for i in range(n):
+        for j in range(n):
+            for k in range(n):
+                distance[j][k] = min(distance[j][k], distance[j][i] + distance[i][k])
+
+    return distance
+#alg29
+
+alg30
+def boyer_moore_algorithm(string, pattern):
+    s_len = len(string)
+    p_len = len(pattern)
+
+    chars = [-1] * 200
+    for p in range(p_len):
+        chars[ord(pattern[p])] = p
+
+    i = 0
+    while i <= s_len - p_len:
+        p = p_len - 1
+
+        while p >= 0 and pattern[p] == string[i + p]:
+            p -= 1
+
+        if p < 0:
+            if i + p_len < s_len:
+                i += (p_len - chars[ord(string[i + p_len])])
+            else:
+                i += 1
+        else:
+            i += max(1, p - chars[ord(string[i + p])])
+#alg30
+
+alg31
+def karp_rabin_algorithm(string, pattern):
+
+    string_len = len(string)
+    pattern_len = len(pattern)
+
+    p_hash = hash(pattern)
+    s_hash = hash(string[0:pattern_len])
+
+    counter = 0
+
+    for i in range(string_len - pattern_len + 1):
+        if s_hash != p_hash:
+            s_hash = hash(string[i:i + pattern_len])
+        else:
+            counter += 1
+            s_hash = hash(string[i:i + pattern_len])
+
+    if counter == 0:
+        print('No matching pattern in given string')
+#alg31
+
+alg32
+def cezar_algorithm(step, string):
+    alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    result = ''
+
+    for s in string:
+        idx = alphabet.find(s)
+
+        if idx == -1:
+            result += s
+        else:
+            new_index = (idx + step) % len(alphabet)
+            result += alphabet[new_index]
+
+    return result
+#alg32
+
+alg33
+def bubble_sort_algorithm(d):
+    if len(d) <= 1:
+        return d
+
+    for i in range(len(d)):
+        for j in range(len(d)):
+            if d[i] < d[j]:
+                tmp = d[i]
+                d[i] = d[j]
+                d[j] = tmp
+    return d
+#alg33
+
+alg34
+# quick_sort_algorithm
+def quick_sort(d):
+    if len(d) <= 1:
+        return d
+    less = []
+    equal = []
+    more = []
+
+    pivot = d[0]
+    for n in d:
+        if n < pivot:
+            less.append(n)
+        elif n == pivot:
+            equal.append(n)
+        elif n > pivot:
+            more.append(n)
+    return quick_sort(less) + equal + quick_sort(more)
+#alg34
+
+alg35
+def prime_alg(graph, n, start):
+    visited = [False] * n
+    visited[start] = True
+    t = []
+
+    for i in range(n - 1):
+        minimum = math.inf
+        x = 0
+        y = 0
+        for j in range(n):
+            if visited[j]:
+                for k in range(n):
+                    if (not visited[k]) and graph[j][k]:
+                        if minimum > graph[j][k]:
+                            minimum = graph[j][k]
+                            x = j
+                            y = k
+        visited[y] = True
+        t.append((x, y, graph[x][y]))
+    return t
+#alg35

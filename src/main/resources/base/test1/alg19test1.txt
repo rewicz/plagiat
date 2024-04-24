@@ -1,0 +1,13 @@
+    void sortowanie(std::vector<int>& lista) {
+        for (size_t i = 1; i < lista.size(); i++) {
+            int current = lista[i];
+            // komentarz
+            int j ;
+            j = i - 1
+            while (j >= 0 && lista[j] > current) {
+                lista[j + 1] = lista[j];
+                j = j -1;
+            }
+            lista[j + 1] = current;
+        }
+    }

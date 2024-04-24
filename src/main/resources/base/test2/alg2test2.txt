@@ -1,0 +1,17 @@
+def update_children_in_parent(element, matching_title, new_nodes):
+        if element is None:
+        return None
+
+        if element.key == matching_title:
+        if element.children is not None:
+        element.children.clear()
+        element.children.extend(new_nodes)
+        element.triggered = True
+        return element
+
+        if element.children is not None:
+        for child in element.children:
+        update_children_in_parent(child, matching_title, new_nodes)
+
+        return element
+

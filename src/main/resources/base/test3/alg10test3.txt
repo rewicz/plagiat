@@ -1,0 +1,11 @@
+function SumOfSquares(numbers: TIntArray): Integer;
+var
+    sum, i: Integer;
+begin
+    sum := 0;
+    for i := Low(numbers) to High(numbers) do
+    begin
+        sum := sum + (numbers[i] * numbers[i]);
+    end;
+    SumOfSquares := sum;
+end;

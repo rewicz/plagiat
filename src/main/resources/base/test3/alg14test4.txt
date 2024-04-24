@@ -1,0 +1,29 @@
+public static List<Node> findPath(int[][] grid, Node start, Node end) {
+        PriorityQueue<Node> open = new PriorityQueue<>();
+        Set<Node> closed = new HashSet<>();
+        start.g = 0;
+        start.f = start.g + heuristic(start, end);
+        open.add(start);
+
+        while (!open.isEmpty()) {
+        Node current = open.poll();
+        if (current.equals(end)) {
+        return reconstructPath(end);
+        }
+        closed.add(current);
+
+        for (Node neighbor : getNeighbors(current, grid)) {
+        if (closed.contains(neighbor)) {
+        continue;
+        }
+        int tentativeG = current.g + 1; // Assume cost between neighboring nodes as 1
+        if (!open.contains(neighbor) || tentativeG < neighbor.g) {
+        neighbor.g = tentativeG;
+        neighbor.f = neighbor.g + heuristic(neighbor, end);
+        neighbor.parent = current;
+        open.add(neighbor);
+        }
+        }
+        }
+        return null;
+        }

@@ -1,0 +1,21 @@
+void FizzBuzz(std::vector<int>& numbers)
+{
+    for (const auto& x : numbers)
+    {
+        std::cout << x << ": ";
+        if (x % 3 == 0 and x % 5 == 0)
+        {
+            std::cout << "FizzBuzz" << std::endl;
+        }
+        else if (x % 3 == 0)
+        {
+            std::cout << "Fizz" << std::endl;
+        }
+        else if (x % 5 == 0)
+        {
+            std::cout << "Buzz" << std::endl;
+        }
+        else
+            std::cout << x << std::endl;
+    }
+}

@@ -1,0 +1,3 @@
+String intToBinary(int number) {
+    return String.format("%32s", Integer.toBinaryString(number)).replace(' ', '0');
+}

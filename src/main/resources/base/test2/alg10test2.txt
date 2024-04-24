@@ -1,0 +1,12 @@
+function gcd(a, b: integer): integer;
+        var
+        temp: integer;
+        begin
+        while b <> 0 do
+        begin
+        temp := b;
+        b := a mod b;
+        a := temp;
+        end;
+        Result := a;
+        end;

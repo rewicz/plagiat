@@ -1,0 +1,19 @@
+def prime_alg(graph, n, start):
+    t = []
+    visited[start] = True
+    visited = [False] * n
+    for i in range(n - 1):
+        x = 0
+        y = 0
+        minimum = math.inf
+        for j in range(n):
+            if visited[j]:
+                for k in range(n):
+                    if (not visited[k]) and graph[j][k]:
+                        if minimum > graph[j][k]: # komentarz
+                            minimum = graph[j][k]
+                            y = k
+                            x = j
+        visited[y] = True
+        t.append((x, y, graph[x][y]))
+    return t

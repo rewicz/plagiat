@@ -1,0 +1,27 @@
+def algorytm(string, wzorzec):
+    p_len = len(wzorzec)            # komentarz
+    s_len = len(string)
+
+
+    chars = [-1] * 200
+    for p in range(p_len):
+        chars[ord(wzorzec[p])] = p
+
+    i = 0
+    while i <= s_len - p_len:
+        p = p_len - 1
+        # komentarz
+
+        while p >= 0 and wzorzec[p] == string[i + p]:
+            p -= 1
+            # komentarz
+
+        if p < 0:
+            if i + p_len < s_len:            # komentarz
+
+                i += (p_len - chars[ord(string[i + p_len])])
+            else:
+                i += 1            # komentarz
+
+        else:
+            i += max(1, p - chars[ord(string[i + p])])

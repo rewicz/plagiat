@@ -1,0 +1,16 @@
+public static void shell(int[] array) {
+        int n;
+        n = array.length
+        for (int roznica = n / 2; roznica > 0; roznica /= 2) {
+        for (int i = roznica; i < n; i++) {
+        int j;
+        //        komentarz
+        int temp = array[i];
+        for (j = i; j >= roznica && array[j - roznica] > temp; j -= roznica) {
+        array[j] = array[j - roznica];
+        }
+        //        komentarz
+        array[j] = temp;
+        }
+        }
+        }

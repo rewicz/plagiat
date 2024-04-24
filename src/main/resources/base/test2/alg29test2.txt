@@ -1,0 +1,19 @@
+function floyd_warshall_algorithm(graph: array of array of Integer): array of array of Integer;
+var
+n, i, j, k: Integer;
+distance: array of array of Integer;
+begin
+n := Length(graph);
+SetLength(distance, n, n);
+
+for i := 0 to n - 1 do
+for j := 0 to n - 1 do
+distance[i][j] := graph[i][j];
+
+for i := 0 to n - 1 do
+for j := 0 to n - 1 do
+for k := 0 to n - 1 do
+distance[j][k] := Min(distance[j][k], distance[j][i] + distance[i][k]);
+
+Result := distance;
+end;

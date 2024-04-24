@@ -1,0 +1,22 @@
+public static void sortowanie(int[] lista) {
+        boolean zmienione;
+        //        komentarz
+        for (int i = 0; i < lista.length - 1; i++) {
+        zmienione = false;
+        //        komentarz
+        for (int j = 0; j < lista.length - i - 1; j++) {
+        if (lista[j] > lista[j + 1]) {
+        zmienione = true;
+        //        komentarz
+        int temp = lista[j];
+        lista[j] = lista[j + 1];
+        lista[j + 1] = temp;
+        }
+        //        komentarz
+        }
+        if (!zmienione) {
+        break;
+        }
+        }
+        //        komentarz
+        }

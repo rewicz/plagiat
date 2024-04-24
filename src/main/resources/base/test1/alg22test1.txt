@@ -1,0 +1,34 @@
+    void dijkstra(const std::vector<std::vector<int>>& graph, int startNode) {
+        int nVertices = graph.size();
+        std::vector<bool> added(nVertices, false);
+        std::vector<int> shortestDistances(nVertices, std::numeric_limits<int>::max());
+
+        shortestDistances[startNode] = 0;
+
+        // komentarz
+        for (int i = 1; i < nVertices; i++) {
+            // komentarz
+            int shortestDistance = std::numeric_limits<int>::max();
+            int nearestVertex = -1;
+            // komentarz
+            for (int vertexIndex = 0; vertexIndex < nVertices; vertexIndex++) {
+                if (!added[vertexIndex] && shortestDistances[vertexIndex] < shortestDistance) {
+                    nearestVertex = vertexIndex;
+                    shortestDistance = shortestDistances[vertexIndex];
+                }
+            // komentarz
+
+            }
+
+            added[nearestVertex] = true;
+            // komentarz
+            for (int vertexIndex = 0; vertexIndex < nVertices; vertexIndex++) {
+                if (graph[nearestVertex][vertexIndex] > 0) {
+                    int edgeDistance = graph[nearestVertex][vertexIndex];
+                    if (shortestDistance + edgeDistance < shortestDistances[vertexIndex]) {
+                        shortestDistances[vertexIndex] = shortestDistance + edgeDistance;
+                    }
+                }
+            }
+        }
+    }

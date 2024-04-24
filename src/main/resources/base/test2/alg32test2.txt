@@ -1,0 +1,24 @@
+function cezar_algorithm(step: Integer; string_text: String): String;
+var
+alphabet, result: String;
+idx, new_index, i: Integer;
+begin
+alphabet := 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+result := '';
+
+for i := 1 to Length(string_text) do
+begin
+idx := Pos(string_text[i], alphabet);
+if idx = 0 then
+result := result + string_text[i]
+else
+begin
+new_index := (idx + step) mod Length(alphabet);
+if new_index = 0 then
+new_index := Length(alphabet);
+result := result + alphabet[new_index];
+end;
+end;
+
+cezar_algorithm := result;
+end;

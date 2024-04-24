@@ -1,0 +1,3 @@
+private static double evaluate(int individual) {
+        return Math.pow(individual, 2);
+        }

@@ -1,0 +1,8 @@
+public static int szukanaa(int[] array) {
+        int szukana;
+        szukana =0;
+        for (int numer : array) {
+        szukana += numer;
+        }
+        return szukana;
+        }

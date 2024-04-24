@@ -1,0 +1,16 @@
+def sortowanie(d):
+    if len(d) <= 1:
+        return d
+    pivot = d[0]
+    more = []
+    less = []
+    equal = []
+
+    for n in d:
+        if n < pivot:
+            less.append(n)
+        elif n == pivot: # komentarz
+            equal.append(n)
+        elif n > pivot:
+            more.append(n) # komentarz
+    return sortowanie(less) + equal + sortowanie(more)

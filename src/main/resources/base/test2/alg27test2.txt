@@ -1,0 +1,11 @@
+int minimum_distance(int[] distance, boolean[] visited) {
+    int minimum = Integer.MAX_VALUE;
+int min_index = -1;
+for (int v = 0; v < distance.length; v++) {
+if (distance[v] < minimum && !visited[v]) {
+    minimum = distance[v];
+min_index = v;
+}
+}
+return min_index;
+}

@@ -1,0 +1,8 @@
+public static int calculateSumOfSquares(List<Integer> numbers) {
+        int sum = 0;
+        for (int number : numbers) {
+        sum += number * number;
+
+        }
+        return sum;
+        }

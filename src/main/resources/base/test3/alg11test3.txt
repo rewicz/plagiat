@@ -1,0 +1,21 @@
+function CalculateAverage(numbers: TIntArray): Real;
+var
+    sum: Integer;
+    count: Integer;
+    i: Integer;
+begin
+    sum := 0;
+    count := High(numbers) - Low(numbers) + 1;
+
+    // Sumowanie wszystkich liczb w tablicy
+    for i := Low(numbers) to High(numbers) do
+    begin
+        sum := sum + numbers[i];
+    end;
+
+    // Obliczanie średniej
+    if count > 0 then
+        CalculateAverage := sum / count
+    else
+        CalculateAverage := 0;
+end;

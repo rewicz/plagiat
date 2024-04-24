@@ -1,0 +1,28 @@
+void boyer_moore_algorithm(std::string string, std::string pattern) {
+    int s_len = string.length();
+int p_len = pattern.length();
+
+std::vector<int> chars(200, -1);
+for (int p = 0; p < p_len; p++) {
+    chars[static_cast<int>(pattern[p])] = p;
+}
+
+int i = 0;
+while (i <= s_len - p_len) {
+int p = p_len - 1;
+
+while (p >= 0 && pattern[p] == string[i + p]) {
+p--;
+}
+
+if (p < 0) {
+if (i + p_len < s_len) {
+i += (p_len - chars[static_cast<int>(string[i + p_len])]);
+} else {
+i += 1;
+}
+} else {
+i += std::max(1, p - chars[static_cast<int>(string[i + p])]);
+}
+}
+}

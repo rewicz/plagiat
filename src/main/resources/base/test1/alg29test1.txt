@@ -1,0 +1,12 @@
+def floyd(graph):
+    distance = copy.deepcopy(graph)
+    n = len(graph)
+
+    for i in range(n):
+        for j in range(n):
+            # komentarz
+            for k in range(n):
+                distance[j][k] = min(distance[j][k], distance[j][i] + distance[i][k])
+
+    return distance
+

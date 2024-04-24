@@ -1,0 +1,18 @@
+void sortowanie(int table[],int liczby){
+    int zmienna;
+    int a;
+    int change;
+        do{
+        a=liczby-1;
+        change=0;
+        do{
+        a--;
+        if(table[i+1]<table[a]){
+        zmienna=table[a];
+        change=1;
+        table[a]=table[a+1];
+        table[a+1]=zmienna;
+        }
+        }while(a!=0);
+        }while(change!=0);
+        }

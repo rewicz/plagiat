@@ -1,0 +1,12 @@
+function CountDivisibleByThree(numbers: TIntArray): Integer;
+var
+    count, i: Integer;
+begin
+    count := 0;
+    for i := Low(numbers) to High(numbers) do
+    begin
+        if (numbers[i] mod 3 = 0) then
+            Inc(count);
+    end;
+    CountDivisibleByThree := count;
+end;

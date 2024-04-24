@@ -1,0 +1,11 @@
+public static int sumlista(int[] lista) {
+        int sum;
+        sum = 0;
+        //        komentarz
+        for (int number : lista) {
+        sum += number;
+        //        komentarz
+        }
+        //        komentarz
+        return sum;
+        }

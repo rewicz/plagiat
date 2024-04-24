@@ -1,0 +1,82 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public List<Point> aStarAlgorithm(int[][] graph, Point start, Point end) {
+    Node startNode = new Node(null, start);
+startNode.g = startNode.h = startNode.f = 0;
+Node endNode = new Node(null, end);
+endNode.g = endNode.h = endNode.f = 0;
+
+List<Node> openNodes = new ArrayList<>();
+List<Node> closedNodes = new ArrayList<>();
+openNodes.add(startNode);
+
+while (!openNodes.isEmpty()) {
+Node currentNode = openNodes.get(0);
+int currentIdx = 0;
+
+for (int idx = 0; idx < openNodes.size(); idx++) {
+Node node = openNodes.get(idx);
+if (node.f < currentNode.f) {
+currentNode = node;
+currentIdx = idx;
+}
+}
+
+openNodes.remove(currentIdx);
+closedNodes.add(currentNode);
+
+if (currentNode.equals(endNode)) {
+List<Point> path = new ArrayList<>();
+Node temp = currentNode;
+while (temp != null) {
+path.add(temp.coord);
+temp = temp.parent;
+}
+List<Point> reversedPath = new ArrayList<>();
+for (int i = path.size() - 1; i >= 0; i--) {
+reversedPath.add(path.get(i));
+}
+return reversedPath;
+}
+
+List<Node> neighbours = new ArrayList<>();
+int[][] newPositions = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
+for (int[] newPosition : newPositions) {
+int newX = currentNode.coord.x + newPosition[0];
+int newY = currentNode.coord.y + newPosition[1];
+
+if (newX > graph.length - 1 || newX < 0 || newY > graph[0].length - 1 || newY < 0) {
+continue;
+}
+
+if (graph[newX][newY] != 0) {
+continue;
+}
+
+Node newNode = new Node(currentNode, new Point(newX, newY));
+neighbours.add(newNode);
+}
+
+for (Node neighbour : neighbours) {
+for (Node closed : closedNodes) {
+if (neighbour.equals(closed)) {
+continue;
+}
+}
+
+neighbour.g = currentNode.g + 1;
+neighbour.h = calculateHeuristic(neighbour, endNode);
+neighbour.f = neighbour.g + neighbour.h;
+
+for (Node opened : openNodes) {
+if (neighbour.equals(opened) && neighbour.g > opened.g) {
+continue;
+}
+}
+
+openNodes.add(neighbour);
+}
+}
+return null;
+}

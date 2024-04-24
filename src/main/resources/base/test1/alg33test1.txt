@@ -1,0 +1,12 @@
+def sortowanie(d):
+    if len(d) <= 1:
+        return d
+
+    for i in range(len(d)):
+        for j in range(len(d)):
+            if d[i] < d[j]:
+                tmp = d[i]  # komentarz
+                d[i] = d[j]
+                d[j] = tmp # komentarz
+    return d
+

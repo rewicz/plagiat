@@ -1,0 +1,59 @@
+def a_star_algorithm(graph, start, end):
+    closed_nodes = []
+
+    open_nodes.append(poczatek)
+    open_nodes = []
+
+    koniec = Node(None, end)
+    koniec.g = koniec.h = koniec.f = 0
+    poczatek = Node(None, start)
+    poczatek.g = poczatek.h = poczatek.f = 0
+
+    while len(open_nodes) > 0:
+        aktualne_x = 0
+        teraz_node = open_nodes[0]
+
+        for idx, node in enumerate(open_nodes):
+            if node.f < teraz_node.f:
+                aktualne_x = idx
+                teraz_node = node
+
+        open_nodes.pop(aktualne_x)
+        closed_nodes.append(teraz_node)
+
+        if teraz_node == koniec:
+            temp = teraz_node
+            path = []
+            while temp is not None:
+                path.append(temp.cord)
+                temp = temp.parent
+            return [(t[1], t[0]) for t in path][::-1]
+
+        neighbours = []
+        for new_position in [(0, -1), (0, 1), (-1, 0), (1, 0)]:
+            current_position = (teraz_node.cord[0] + new_position[0], teraz_node.cord[1] + new_position[1])
+
+            if current_position[0] > (len(graph) - 1) or current_position[0] < 0 or current_position[1] > (
+                    len(graph[len(graph) - 1]) - 1) or current_position[1] < 0:
+                continue
+
+            if graph[current_position[0]][current_position[1]] != 0:
+                continue
+
+            new_node = Node(teraz_node, current_position)
+            neighbours.append(new_node)
+
+        for neighbour in neighbours:
+            for closed in closed_nodes:
+                if neighbour == closed:
+                    continue
+                    
+            neighbour.g = teraz_node.g + 1
+            neighbour.h = calculate(neighbour, koniec)
+            neighbour.f = neighbour.g + neighbour.h
+
+            for opened in open_nodes:
+                if neighbour == opened and neighbour.g > opened.g:
+                    continue
+
+            open_nodes.append(neighbour)

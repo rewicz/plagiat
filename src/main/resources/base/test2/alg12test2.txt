@@ -1,0 +1,20 @@
+def find_leader(array):
+        count = 0
+        candidate = None
+
+        for number in array:
+        if count == 0:
+        candidate = number
+        if number == candidate:
+        count += 1
+        else:
+        count -= 1
+
+        count = 0
+        for number in array:
+        if number == candidate:
+        count += 1
+
+        if count > len(array) // 2:
+        return candidate
+        return None

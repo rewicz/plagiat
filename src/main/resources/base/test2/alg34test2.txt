@@ -1,0 +1,30 @@
+public List<Integer> bubble_sort(List<Integer> d) {
+if (d.size() <= 1) {
+return d;
+}
+
+List<Integer> less = new ArrayList<>();
+List<Integer> equal = new ArrayList<>();
+List<Integer> more = new ArrayList<>();
+
+int pivot = d.get(0);
+for (int n : d) {
+if (n < pivot) {
+less.add(n);
+} else if (n == pivot) {
+equal.add(n);
+} else if (n > pivot) {
+more.add(n);
+}
+}
+
+List<Integer> sortedLess = bubble_sort(less);
+List<Integer> sortedMore = bubble_sort(more);
+
+List<Integer> sorted = new ArrayList<>();
+sorted.addAll(sortedLess);
+sorted.addAll(equal);
+sorted.addAll(sortedMore);
+
+return sorted;
+}

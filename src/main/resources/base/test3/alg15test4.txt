@@ -1,0 +1,23 @@
+void kruskalMST() {
+        Edge[] result = new Edge[vertices];
+        int e = 0;
+        int i = 0;
+        Collections.sort(edges);
+
+        int[] parent = new int[vertices];
+        for (i = 0; i < vertices; ++i) {
+        parent[i] = -1;
+        }
+
+        i = 0;
+        while (e < vertices - 1) {
+        Edge next_edge = edges.get(i++);
+        int x = find(parent, next_edge.src);
+        int y = find(parent, next_edge.dest);
+
+        if (x != y) {
+        result[e++] = next_edge;
+        union(parent, x, y);
+        }
+        }
+ }

@@ -1,0 +1,12 @@
+std::string find_max(std::vector<int> collection) {
+if (collection.empty()) {
+return "No input to process";
+}
+int max_element = collection[0];
+for (int element : collection) {
+if (element > max_element) {
+max_element = element;
+}
+}
+return std::to_string(max_element);
+}

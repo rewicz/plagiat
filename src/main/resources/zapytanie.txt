@@ -1,0 +1,1 @@
+Describe each algorithm separately in 1-2 sentences without using variable names, focus on the logic of the algorithm, name every algorithm in brackets square brackets ,dont use def name of algorithm

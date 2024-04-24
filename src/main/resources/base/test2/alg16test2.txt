@@ -1,0 +1,4 @@
+function toBinary(number: integer): string;
+        begin
+        Result := IntToBin(number);
+        end;

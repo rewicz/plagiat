@@ -1,0 +1,34 @@
+public static Integer lider(int[] lista) {
+        Integer candidate = null;
+        int temp ;
+        //        komentarz
+        temp = 0;
+        for (int number : lista) {
+        if (temp == 0) {
+        candidate = number;
+        //        komentarz
+        }
+        if (number == candidate) {
+        temp = temp +1 ;
+        //        komentarz
+
+        } else {
+        temp = temp -1;
+        }
+        //        komentarz
+        }
+
+        temp = 0;
+        for (int number : lista) {
+        if (number == candidate) {
+        //        komentarz
+        temp= temp +1;
+        }
+        }
+
+        if (temp > lista.length / 2) {
+        return candidate;
+        }
+        //        komentarz
+        return null;
+        }

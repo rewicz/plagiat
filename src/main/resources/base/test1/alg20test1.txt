@@ -1,0 +1,15 @@
+    void shellSort(std::vector<int>& lista) {
+        int n;
+        n = lista.size()
+        for (int gap = n / 2; gap > 0; gap /= 2) {
+            for (int i = gap; i < n; i++) {
+                int j;
+                int temp = lista[i];
+                for (j = i; j >= gap && lista[j - gap] > temp; j -= gap) {
+                    lista[j] = lista[j - gap];
+                }
+                // komenatrz
+                lista[j] = temp;
+            }
+        }
+    }

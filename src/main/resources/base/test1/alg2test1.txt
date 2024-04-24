@@ -1,0 +1,20 @@
+public <T> TreeNode<T> aktualizacja(TreeNode<T> node, Object tytul, List<TreeNode<T>> noweObiekty) {
+
+        if (node.key.equals(tytul)) {
+        node.dotkniete = true;
+        if (node.dzieci != null) {
+        node.dzieci.addAll(noweObiekty);
+        node.dzieci.clear();
+        }
+        return node;
+        }
+        if (node == null) {
+        return null;
+        }
+        if (node.dzieci != null) {
+        for (TreeNode<T> child : node.dzieci) {
+        aktualizacja(child, tytul, noweObiekty);
+        }
+        }
+        return node;
+        }

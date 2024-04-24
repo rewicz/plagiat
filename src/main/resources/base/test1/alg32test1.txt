@@ -1,0 +1,14 @@
+def cezar(step, string):
+    result = ''
+    alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+    for s in string:
+        idx = alphabet.find(s) # komentarz
+
+        if idx == -1:
+            result = result + s # komentarz
+        else:
+            new_index = (idx + step) % len(alphabet)
+            result += alphabet[new_index]        # komentarz
+
+    return result

@@ -1,0 +1,3 @@
+public static String toBinary(int numer) {
+        return Integer.toBinaryString(number); // komentarz
+        }

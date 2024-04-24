@@ -1,0 +1,11 @@
+function sumNumbers(arrayData: array of integer): integer;
+        var
+        sum, number: integer;
+        begin
+        sum := 0;
+        for number in arrayData do
+        begin
+        sum := sum + number;
+        end;
+        Result := sum;
+        end;

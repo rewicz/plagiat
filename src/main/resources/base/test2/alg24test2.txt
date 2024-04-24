@@ -1,0 +1,27 @@
+ArrayList<Integer> ZmianaPodstawy2Wektor(int pods, int liczba) {
+    ArrayList<Integer> v = new ArrayList<>();
+    ArrayList<Integer> w = new ArrayList<>();
+    int i, j;
+
+    if (liczba < 0) {
+        return null;
+    }
+    if (liczba == 0) {
+        v.add(1);
+        v.add(0);
+        return v;
+    }
+
+    i = 1;
+    while (liczba > 0) {
+        i++;
+        v.add(liczba % pods);
+        liczba = liczba / pods;
+    }
+
+    for (j = 2; j <= i; j++) {
+        w.add(v.get(i - j + 2));
+    }
+    w.add(0, i - 1);
+    return w;
+}

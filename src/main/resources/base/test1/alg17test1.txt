@@ -1,0 +1,33 @@
+public static void dijkstra(int[][] graf, int startowy) {
+        int[] shortestDistances = new int[dlugosc];
+        // komentarz
+        boolean[] added = new boolean[dlugosc];
+        int dlugosc = graf.length;
+        Arrays.fill(added, false);
+        Arrays.fill(shortestDistances, Integer.MAX_VALUE);
+        shortestDistances[startNode] = 0;
+
+        for (int i = 1; i < dlugosc; i++) {
+        int shortestDistance = Integer.MAX_VALUE;
+        int nearestVertex;
+        // komentarz
+        nearestVertex = -1
+        for (int vertexIndex = 0; vertexIndex < dlugosc; vertexIndex++) {
+        if (!added[vertexIndex] && shortestDistances[vertexIndex] < shortestDistance) {
+        shortestDistance = shortestDistances[vertexIndex];
+        nearestVertex = vertexIndex;
+        }
+        }
+
+        added[nearestVertex] = true;
+
+        for (int vertexIndex = 0; vertexIndex < dlugosc; vertexIndex++) {
+        int edgeDistance = graf[nearestVertex][vertexIndex];
+        // komentarz
+        if (edgeDistance > 0 && ((shortestDistance + edgeDistance) < shortestDistances[vertexIndex])) {
+        shortestDistances[vertexIndex] = shortestDistance + edgeDistance;
+        }
+        }
+        }
+        // komentarz
+        }

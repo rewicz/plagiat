@@ -1,0 +1,23 @@
+int tsp(const vector<vector<int>>& dist) {
+    int n = dist.size();
+    vector<vector<int>> dp(1 << n, vector<int>(n, INT_MAX));
+    dp[1][0] = 0;  // Start from the first city
+
+    for (int mask = 1; mask < (1 << n); mask += 2) {
+        for (int u = 1; u < n; ++u) {
+            if (!(mask & (1 << u))) continue;
+            for (int v = 0; v < n; ++v) {
+                if (mask & (1 << v)) continue;
+                int nextMask = mask | (1 << v);
+                dp[nextMask][v] = min(dp[nextMask][v], dp[mask][u] + dist[u][v]);
+            }
+        }
+    }
+
+    int minPath = INT_MAX;
+    for (int u = 1; u < n; ++u) {
+        minPath = min(minPath, dp[(1 << n) - 1][u] + dist[u][0]);
+    }
+
+    return minPath;
+}

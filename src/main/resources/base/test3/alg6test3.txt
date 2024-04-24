@@ -1,0 +1,11 @@
+def divide_list_into_three(input_list):
+        list1, list2, list3 = [], [], []
+        for index, value in enumerate(input_list):
+                if index % 3 == 0:
+                        list1.append(value)
+                elif index % 3 == 1:
+                        list2.append(value)
+                else:
+                        list3.append(value)
+
+        return list1, list2, list3

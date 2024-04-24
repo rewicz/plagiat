@@ -1,0 +1,26 @@
+function bubble_sort_algorithm(d: array of Integer): array of Integer;
+var
+i, j, tmp: Integer;
+begin
+if Length(d) <= 1 then
+begin
+Result := d;
+Exit;
+end;
+
+for i := 0 to Length(d) - 1 do
+begin
+for j := 0 to Length(d) - 1 do
+begin
+if d[i] < d[j] then
+begin
+tmp := d[i];
+d[i] := d[j];
+d[j] := tmp;
+end;
+end;
+end;
+Result := d;
+end;
+
+

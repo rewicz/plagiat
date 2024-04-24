@@ -1,0 +1,11 @@
+def bfs(graph, start_vertex):
+    visited = set()
+    queue = deque([start_vertex])
+    visited.add(start_vertex)
+    while queue:
+        vertex = queue.popleft()
+        print(vertex, end=" ")
+        for neighbor in graph[vertex]:
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(neighbor)

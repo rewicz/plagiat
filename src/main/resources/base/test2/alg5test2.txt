@@ -1,0 +1,13 @@
+int findMaxValue(int array[], int size) {
+        if (array == nullptr || size == 0) {
+        throw std::invalid_argument("Array is empty or null");
+        }
+        int max_value = array[0];
+        for (int i = 1; i < size; ++i) {
+        if (array[i] > max_value) {
+        max_value = array[i];
+        }
+        }
+        return max_value;
+        }
+

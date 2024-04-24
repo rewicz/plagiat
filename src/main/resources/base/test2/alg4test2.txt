@@ -1,0 +1,14 @@
+def search_all_children_keys(element, temp_key):
+        if element is None or element.key == temp_key:
+        return []
+
+        array_keys = [str(element.key)]
+        if element.children is None:
+        return array_keys
+
+        for child in element.children:
+        parent_keys = search_all_children_keys(child, temp_key)
+        array_keys.extend(parent_keys)
+
+        return array_keys
+

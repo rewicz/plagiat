@@ -1,0 +1,10 @@
+public static int greatestDividor(int first, int second) {
+        while (second != 0) {
+        //        komentarz
+        int temp = second;
+        second = first % second;
+        first = temp;
+        }
+        //        komentarz
+        return first;
+        }
